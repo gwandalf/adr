@@ -73,7 +73,7 @@ A chaque point caractéristique est associé un vecteur de caractéristiques $V$
 	Le quadrilatère $C_{i_1}C_{i_2}C_{i_3}C_{i_4}$ étant non-croisé et dont les sommets constituent une combinaison de 4 points parmi les $m$ plus proches voisins du centroïde considéré, lui-même inclus, et $P(A,B,C)$ étant l'aire du triangle $ABC$. Les deux triangles comparés ont donc une arête en commun. Une distorsion provoque une division de l'aire de deux triangles par un même facteur. Le rapport des deux aires est donc invariant par rapport à la distorsion, ce qui explique le choix de cette caractéristique.
 \end{enumerate}
 
-\textbf{Remarques personnelles~:} \textit{l'article explique mal la signification des valeurs de $q_0$ à $q_{m-1}$. Il est dit qu'il s'agit des rangs des rapports entre les aires occupées par des mots voisins. La figure \ref{fig:features}, tirée de l'article, montre un exemple pour $m = 6$. Les rapports d'aires semblent triés, mais selon quel critère ? Le tri ne semble pas cohérent avec les rapports apparents. De plus, le sens de comparaison n'est pas spécifié. Pour chaque couple de mot, quelle aire est au numérateur ? Quelle aire est au dénominateur ?}
+\textbf{Remarque personnelle~:} \textit{l'article explique mal la signification des valeurs de $q_0$ à $q_{m-1}$. Il est dit qu'il s'agit des rangs des rapports entre les aires occupées par des mots voisins. La figure \ref{fig:features}, tirée de l'article, montre un exemple pour $m = 6$. Les rapports d'aires semblent triés, mais selon quel critère ? Le tri ne semble pas cohérent avec les rapports apparents. De plus, le sens de comparaison n'est pas spécifié. Pour chaque couple de mot, quelle aire est au numérateur ? Quelle aire est au dénominateur ?}
 
 \begin{figure}[!h]
 \centering
@@ -86,8 +86,10 @@ Pour trouver l'image d'un document dans la base de données, on calcule les vect
 \subsubsection{LLAH amélioré}
 La première amélioration proposée est destinée à réduire la consommation en mémoire. Les auteurs proposent de réduire le nombre de points caractéristiques enregistrés car l'algorithme de mise en correspondance, basé sur le vote, n'est pas sensible aux variations du nombre de votants à partir d'un certain seuil. ce seuil est fixé à 200 points caractéristiques au minimum.
 
+Il s'avère aussi que pour des bases de 10 million de pages, les vecteurs de caractéristiques ne sont pas assez discriminants. Pour augmenter le pouvoir de discrimination d'un vecteur, il suffit d'augmenter sa dimension. dans notre cas, une augmentation de la valeur du paramètre $m$ est suffisante. Cependant, augmenter la dimension d'un vecteur augmente aussi le risque d'échec de la comparaison de deux vecteurs qui "devraient être égaux". C'est la raison pour laquelle on supprime également l'information redondante. C'est ainsi que certains attributs de $r_0$ à $r_{{m\choose 4}-1}$ sont éliminés, de façon à ne faire intervenir chaque triangle qu'une seule fois dans tous les calculs.\\
+\\
 
-
+\textbf{Remarque personnelle~:} \textit{Les auteurs justifient ce "filtrage" par le fait qu'étant donnés trois attributs $r_1 = \frac{P_1}{P_2}$, $r_2 = \frac{P_2}{P_3}$ et $r_3 = \frac{P_3}{P_4}$, $r_2$ entretient nécessairement une relation avec $r_1$ et $r_3$. Cependant, cette affirmation n'est pas démontrée rigoureusement. Par exemple, l'un n'est pas une combinaison linéaire des deux autres. Aucun modèle mathématique associé à la distorsion n'est proposé pour démontrer qu'il y a bel et bien redondance d'information.}
 
 \begin{thebibliography}{1}
 	\bibitem{augmented-reality} Augmented Reality, "C'est quoi la Réalité Augmentée ?", [En ligne]. Accessible~: \url{www.augmented-reality.fr/cest-quoi-la-realite-augmentee/}. [Accès le 28 Octobre 2014].
