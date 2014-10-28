@@ -8,5 +8,7 @@ Article 1
 
 Article 2
 	Existe-t-il d'autres méthodes efficaces ? Si oui, pourquoi avoir choisi celle-ci en particulier ?
+	Explications : "rank of area ratio" (vecteurs de carac de LLAH original) ---> rang par rapport à quoi ? Ce n'est pas très clair. En plus, on comprend qu'il s'agit d'une comparaison entre les aires, mais dans quel sens se fait la comparaison ?
+		à quoi sert n ?
 	Résultats : amélioration très faible, même pour l'efficacité (diff max de 1%). En fait il est préférable d'utiliser la méthode "memory reduced" pour les bases de moins de 100 000 docs. En pratique, quelle est la taille des BD ? Il semble que le nombre de docs doit être largement supérieur à 10M pour voir une vraie amélioration. Le cropping n'est pas comparé avec les autres méthodes : l'information ne veut pas dire grand chose. Expérience + lectures ---> montrer où est le problème (ex : pourquoi la conso mémoire n'est pas vraiment meilleure alors que ceci est revendiqué par les auteurs).
 	Il y a peut-être une vraie amélioration. Il faudrait soit montrer que non, soit la mettre en évidence.

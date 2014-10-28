@@ -55,9 +55,43 @@ La détection du regard se fait par projection de rayons infrarouges sur les yeu
 \caption{\label{fig:system}Système global.}
 \end{figure}
 
-\subsection{Reconnaissance de document}
+\subsection{Reconnaissance de documents}
 \label{subsec:reconnaissance}
 
+Les auteurs du second article proposent une version améliorée d'une technique appelée LLAH (Locally Likely Arrangement Hashing). En effet, cette technique présente deux défauts majeurs~: elle est gourmande en mémoire et son efficacité diminue si la taille de la base de donnée est grande, car il y a plus de chances de rencontrer des documents semblables.
+
+\subsubsection{Fonctionnement de LLAH}
+Le fonctionnement de LLAH est le suivant~: au moment du référencement dans la base de données, les points caractéristiques sont extraits. Il s'agit de centroïdes de mots, dont la position varie peu en cas de distorsion. Cette propriété est essentielle pour pouvoir associer efficacement deux documents.
+
+A chaque point caractéristique est associé un vecteur de caractéristiques $V$ tel que~:
+\begin{enumerate}
+	\item $d = ({m\choose 4} + m)$, où $d$ est la dimension de $V$ et $m$ est un paramètre.
+	\item $V = (r_0, ..., r_{{m\choose 4}-1}, q_0, ..., q_{m-1})$, où pour tout $i = 0, ..., {m\choose 4}-1$~:
+	
+	$r_i = \frac{P(C_{i_1}, C_{i_3}, C_{i_4})}{P(C_{i_1}, C_{i_2}, C_{i_3})}$
+	
+	Le quadrilatère $C_{i_1}C_{i_2}C_{i_3}C_{i_4}$ étant non-croisé et dont les sommets constituent une combinaison de 4 points parmi les $m$ plus proches voisins du centroïde considéré, lui-même inclus, et $P(A,B,C)$ étant l'aire du triangle $ABC$. Les deux triangles comparés ont donc une arête en commun. Une distorsion provoque une division de l'aire de deux triangles par un même facteur. Le rapport des deux aires est donc invariant par rapport à la distorsion, ce qui explique le choix de cette caractéristique.
+\end{enumerate}
+
+\textbf{Remarques personnelles~:} \textit{l'article explique mal la signification des valeurs de $q_0$ à $q_{m-1}$. Il est dit qu'il s'agit des rangs des rapports entre les aires occupées par des mots voisins. La figure \ref{fig:features}, tirée de l'article, montre un exemple pour $m = 6$. Les rapports d'aires semblent triés, mais selon quel critère ? Le tri ne semble pas cohérent avec les rapports apparents. De plus, le sens de comparaison n'est pas spécifié. Pour chaque couple de mot, quelle aire est au numérateur ? Quelle aire est au dénominateur ?}
+
+\begin{figure}[!h]
+\centering
+\includegraphics[width=0.35\textwidth]{res/features.png}
+\caption{\label{fig:features}Calcul du vecteur de caractéristique pour un centroïde.}
+\end{figure}
+
+Pour trouver l'image d'un document dans la base de données, on calcule les vecteurs de caractéristiques du document en entrée. L'image correspondante est déterminée par un système de vote~: pour chaque vecteur de caractéristiques, on accorde une voix supplémentaire à tous les documents référencés qui le possèdent également. Le document qui remporte le plus de voix "gagne".
+
+\subsubsection{LLAH amélioré}
+La première amélioration proposée est destinée à réduire la consommation en mémoire. Les auteurs proposent de réduire le nombre de points caractéristiques enregistrés car l'algorithme de mise en correspondance, basé sur le vote, n'est pas sensible aux variations du nombre de votants à partir d'un certain seuil. ce seuil est fixé à 200 points caractéristiques au minimum.
+
+
+
+
+\begin{thebibliography}{1}
+	\bibitem{augmented-reality} Augmented Reality, "C'est quoi la Réalité Augmentée ?", [En ligne]. Accessible~: \url{www.augmented-reality.fr/cest-quoi-la-realite-augmentee/}. [Accès le 28 Octobre 2014].
+\end{thebibliography}
 
 \newpage
 
@@ -126,13 +160,5 @@ You can make lists with automatic numbering \dots
 \end{description}
 
 We hope you find write\LaTeX\ useful, and please let us know if you have any feedback using the help menu above.
-
-
-\begin{thebibliography}{1}
-	\bibitem{augmented-reality} Augmented Reality, "C'est quoi la Réalité Augmentée ?", [En ligne]. Accessible~: \url{www.augmented-reality.fr/cest-quoi-la-realite-augmentee/}. [Accès le 28 Octobre 2014].
-\end{thebibliography}
-
-% biblio
-% http://www.augmented-reality.fr/cest-quoi-la-realite-augmentee/
 
 \end{document}
