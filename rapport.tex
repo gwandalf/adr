@@ -36,10 +36,27 @@ Les deux articles proposés sont \textit{Wearable Reading Assist System: Augment
 
 \subsection{Interaction homme-document par suivi oculaire}
 
+Les auteurs du premier article commencent par étudier l'état de l'art de l'interaction sur document par la vision. Il existe des dispositifs adaptés à la lecture sur ordinateur aussi bien que des systèmes portables. Ce sont ces derniers sur lesquelles la méthode proposée se base.
 
+Cette méthode est décomposée en trois modules~:
+\begin{description}
+	\item[Extraction de document~:] association du document lu avec l'un des documents de la base de données. Le document extrait est appelé image du document.
+	\item[Analyse du regard~:] détection des mots-clés fixés successivement.
+	\item[Visualisation virtuelle~:] visualisation des données associées au dernier mot-clé fixé.
+\end{description}
+
+La figure \ref{fig:system} résume le fonctionnement global du système. L'utilisateur doit porter un dispositif de visualisation composé de lunettes spéciales munies d'un appareil de suivi oculaire sur lesquelles sont montées un petit écran laissant voir le monde réel mais pouvant afficher des données virtuelles. Lorsqu'un document est "présenté" au dispositif, le module d'extraction de documents cherche le document associé. La procédure est expliquée au paragraphe suivant (\ref{subsec:reconnaissance}). Lors de la lecture, l'utilisateur peut fixer des mots. Si ces derniers sont des mots-clés, ils sont stockés dans une pile en attendant que le lecteur porte son regard sur l'écran de réalité augmentée. C'est seulement à ce moment-là que les informations sur le dernier mot-clé fixé sont affichées. En effet, l'affichage de ces données de manière intempestive pourrait gêner l'utilisateur en obstruant son champ de vision.
+
+La détection du regard se fait par projection de rayons infrarouges sur les yeux. Les changements d'angles de réflexion de ces rayons infrarouges permettent de déduire la direction du regard. Ce mécanisme nécessite une calibration pour chaque utilisateur différent.
+
+\begin{figure}[!h]
+\centering
+\includegraphics[width=\textwidth]{res/systeme_global.png}
+\caption{\label{fig:system}Système global.}
+\end{figure}
 
 \subsection{Reconnaissance de document}
-
+\label{subsec:reconnaissance}
 
 
 \newpage
