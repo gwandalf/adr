@@ -1,0 +1,14 @@
+Important : il faut être dans l'esprit d'améliorer ces recherches, surtout les résultats (pour les méthodes c'est plus dur... mais c'est bien d'y travailler)
+
+abstract : réponse au "pourquoi" de mon rapport + énumération des axes (sans explications). 
+introduction : contexte général (1$), contexte précis (1$), problème principal traité par chaque article ("Quoi") (2$), plan détaillé et expliqué (mettre en évidence la cohérence de la démarche).
+Article 1
+	résumé de l'article (quoi + comment)
+	faiblesses de l'approche : choix de population de test pas précisé (réponses biaisées ?), questionnement sur le réalisme des conditions de test, infrarouge dans les yeux pose naturellement question, pas de comparaison de résultats avec des systèmes existants (qui semblent exister, d'après le document) ---> à étudier plus en détail (compléments de lecture).
+	propositions : (facultatif) compléments de lecture.
+	La calibration pose beaucoup de problèmes. Que modifier pour les éviter ? ---> lecture complémentaire.
+
+Article 2
+	Existe-t-il d'autres méthodes efficaces ? Si oui, pourquoi avoir choisi celle-ci en particulier ?
+	Résultats : amélioration très faible, même pour l'efficacité (diff max de 1%). En fait il est préférable d'utiliser la méthode "memory reduced" pour les bases de moins de 100 000 docs. En pratique, quelle est la taille des BD ? Il semble que le nombre de docs doit être largement supérieur à 10M pour voir une vraie amélioration. Le cropping n'est pas comparé avec les autres méthodes : l'information ne veut pas dire grand chose. Expérience + lectures ---> montrer où est le problème (ex : pourquoi la conso mémoire n'est pas vraiment meilleure alors que ceci est revendiqué par les auteurs).
+	Il y a peut-être une vraie amélioration. Il faudrait soit montrer que non, soit la mettre en évidence.
