@@ -91,6 +91,20 @@ Il s'avère aussi que pour des bases de 10 million de pages, les vecteurs de car
 
 \textbf{Remarque personnelle~:} \textit{Les auteurs justifient ce "filtrage" par le fait qu'étant donnés trois attributs $r_1 = \frac{P_1}{P_2}$, $r_2 = \frac{P_2}{P_3}$ et $r_3 = \frac{P_3}{P_4}$, $r_2$ entretient nécessairement une relation avec $r_1$ et $r_3$. Cependant, cette affirmation n'est pas démontrée rigoureusement. Par exemple, l'un n'est pas une combinaison linéaire des deux autres. Aucun modèle mathématique associé à la distorsion n'est proposé pour démontrer qu'il y a bel et bien redondance d'information.}
 
+
+\section{Commentaires}
+
+\subsection{Expérimentations de la version améliorée de LLAH}
+Deux expériences ont servi à tester les performances de la version proposée de LLAH.
+
+Pour la première expérience, la méthode proposée a été comparée avec deux autres versions~: le LLAH original et une version avec simplement une réduction de la consommation en mémoire\footnote{Il s'agit en fait de la version proposée pour laquelle seule la réduction en mémoire a été appliquée.}. Pour les trois méthodes et pour chaque critère d'évaluation (mémoire requise, taux de réussite, temps d'exécution et taille moyenne des listes dans la table de hachage\footnote{Les vecteurs de caractéristiques sont munis d'une fonction de hachage pour pouvoir être stockés dans une table de hachage. Si deux vecteurs ont la même valeur de hachage, ils sont stockés derrière la même entrée de la table, dans une liste. Il est important de limiter l'existence de ces listes car elles ralentissent le temps de recherche d'un vecteur de caractéristiques dans la table.}), des mesures ont été effectuées sur des bases de données de 10 000, 100 000, 1 million et 10 millions de documents.
+
+Constats et commentaires, critère d'évaluation par critère d'évaluation~:
+\begin{description}
+	\item[Mémoire requise~:] il n'y a pas vraiment de différences de performance entre la version avec réduction de mémoire seule et la version proposée. Les deux courbes sont quasiment confondues. La seule valeur différente apparaît pour 10 millions de documents. Les deux algorithmes nécessitent respectivement 70 et 77 GB, ce qui ne représente pas une différence relative considérable. En revanche, c'est bien mieux que la version originale qui ne peut tout simplement pas gérer 10 millions de documents et qui requiert 25 GB face à 15 GB pour 1 million de documents. Pour 10 000 et 100 000 documents, les trois méthodes se valent.
+	\item[Taux de réussite~:] 
+\end{description}
+
 \begin{thebibliography}{1}
 	\bibitem{augmented-reality} Augmented Reality, "C'est quoi la Réalité Augmentée ?", [En ligne]. Accessible~: \url{www.augmented-reality.fr/cest-quoi-la-realite-augmentee/}. [Accès le 28 Octobre 2014].
 \end{thebibliography}
