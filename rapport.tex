@@ -119,6 +119,18 @@ L'expérience 2 montre simplement que la méthode proposée résiste bien aux co
 
 \subsection{Expérimentations du système général}
 
+\subsubsection{Reconnaissance de documents}
+Une première expérience a consisté à évaluer les performances du module de reconnaissance des documents dans des conditions réalistes de lecture, en comparant les performances obtenues sur des documents papier et des documents numériques lus sur ordinateur. Cette expérience a le mérite de tester la variation de paramètres liés aux conditions de lecture, ce qui n'est pas fait pour les tests dans l'article dédié à LLAH. Par exemple, des distances caméra-document de 15 cm à 50 cm ont été testées, ainsi que deux noyaux gaussiens de pixellisation de différentes dimensions ($3 \times 3$ et $7 \times 7$). Cela permet de montrer une chute significative du taux de réussite à partir de 35.0 cm ou 45.0 cm de distance selon les cas (voir tableau \ref{tab:results}). Il est important de noter que ces distances ne sont pas des distances de lecture, il n'y a donc aucun problème si les conditions réalistes de lectures ne sont pas respectées pour cette expérience. 
+
+\begin{table}[!h]
+\begin{tabular}{c|c|c|c|c|c|c|c|c}
+Distance [cm] & 15.0 & 20.0 & 25.0 & 30.0 & 35.0 & 40.0 & 45.0 & 50.0 \\\hline
+Efficacité (noyau gaussien $3 \times 3$) [\%] & 99.41 & 100.0 & 100.0 & 100.0 & 100.0 & 98.78 & 74.37 & 23.36 \\\hline
+Efficacité (noyau gaussien $7 \times 7$) [\%] & 100.0 & 100.0 & 100.0 & 99.59 & 47.65 & 0.0 & 0.0 & 0.0
+\end{tabular}
+\caption{\label{tab:results}Taux de réussite de la reconnaissance de documents en fonction de la distance.}
+\end{table}
+
 \subsubsection{Choix de la population de test}
 Afin d'agrémenter les tests, les auteurs de l'article ont demandé aux utilisateurs leur avis sur l'utilité d'un tel système ainsi que leurs impressions concernant les conditions de lecture. 10 utilisateurs sur 13 ont dit effectivement apprécier d'avoir des informations supplémentaires lors de la lecture d'un document. La première remarque qu'on l'on peut faire afin d'interpréter correctement ce résultat, c'est que le nombre de personnes sondées est trop petit pour pouvoir tirer une conclusion pertinente, ce que reconnaissent d'ailleurs les auteurs. Mais je pense qu'il faut aussi s'interroger sur la manière dont ces personnes ont étés trouvées. La procédure de "recrutement" n'est jamais précisée dans l'article. Or, cela poserait un problème si ces personnes font partie d'une population naturellement disposée à apprécier ce genre de technologies, comme les étudiants en informatique de l'université d'Osaka ou de Kaiserslautern, villes où opèrent les auteurs. Il est évident que les réponses sont biaisées si les personnes proviennent de l'entourage professionnel des chercheurs.
 
