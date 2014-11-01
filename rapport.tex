@@ -96,6 +96,8 @@ Il s'avère aussi que pour des bases de 10 million de pages, les vecteurs de car
 \section{Commentaires}
 
 \subsection{Expérimentations de la version améliorée de LLAH}
+
+\subsubsection{Expériences}
 Deux expériences ont servi à tester les performances de la version proposée de LLAH.
 
 Pour la première expérience, la méthode proposée a été comparée avec deux autres versions~: le LLAH original et une version avec simplement une réduction de la consommation en mémoire\footnote{Il s'agit en fait de la version proposée pour laquelle seule la réduction en mémoire a été appliquée.}. Pour les trois méthodes et pour chaque critère d'évaluation (mémoire requise, taux de réussite, temps d'exécution et taille moyenne des listes dans la table de hachage\footnote{Les vecteurs de caractéristiques sont munis d'une fonction de hachage pour pouvoir être stockés dans une table de hachage. Si deux vecteurs ont la même valeur de hachage, ils sont stockés derrière la même entrée de la table, dans une liste. Il est important de limiter l'existence de ces listes car elles ralentissent le temps de recherche d'un vecteur de caractéristiques dans la table.}), des mesures ont été effectuées sur des bases de données de 10 000, 100 000, 1 million et 10 millions de pages.
@@ -148,16 +150,22 @@ Les mêmes remarques peuvent être faites concernant les expériences elles-mêm
 
 Les auteurs ont également demandé aux utilisateurs leur avis sur le confort qu'offre le système. Une partie d'entre eux l'on trouvé encombrant, car il consiste en deux paires de lunettes (le suiveur de regard et le HMD), qui peuvent s'ajouter aux lunettes de vue. De plus, certains ont eu des difficultés avec la calibration. Ainsi, même si le système est techniquement performant, il semble difficilement utilisable en pratique. Selon moi, ceci est un défaut essentiel qu'il faut corriger. Heureusement, cela ne semble pas difficile à faire. En effet, le système physique pourrait être revu et concrétisé en une unique paire de lunettes, adaptées et étudiées pour l'occasion. Il resterait alors le problème de la calibration du suiveur de regard. Les auteurs ont d'ailleurs conclu leur article en disant notamment vouloir y remédier, ce qui est une bonne chose.
 
+\subsection{Reconnaissance d'images}
+Même si les résultats ont bons, il faut noter que LLAH n'utilise que les mots et non les images. Les auteurs de l'article reconnaissent d'ailleurs que les pages comportant beaucoup d'images et peu de textes ne sont pas reconnues. L'algorithme gagnerait donc à intégrer une méthode de reconnaissance d'images.
+
+Enfin, il est possible d'utiliser les images comme des mots-clés, pour affichage d'information complémentaires sur le HMD. C'est ce que montre la méthode exposée dans \cite{annotation}, 
 
 \section{Conclusion}
 Nous avons étudié un article présentant une technique permettant d'obtenir des informations complémentaires lors de la lecture d'un document. Le lecteur porte des lunettes qui suivent la position du regard et affichent des informations liées à un mot-clé sur un petit écran intégré aux lunettes. L'utilisateur a alors accès à une interface avec des boutons sur laquelle il peut naviguer simplement avec le regard. La technique repose en partie sur la reconnaissance du document lu, dont une image est trouvée dans une base de données. Le deuxième article étudié explique le fonctionnement d'un algorithme dédié à cette tâche, LLAH. Dans ce même article, une amélioration est proposée. Celle-ci permet de diminuer la consommation en mémoire et d'augmenter le taux de réussite. Il permet ainsi de gérer une base de plus de 10 millions de pages, alors que la version originale de LLAH ne permet pas de gérer plus de 1 million de pages.
 
 Quelques critiques ont été émises sur ces articles ; sur la démarche présentée mais surtout sur les expériences de validation et l'interprétation de leurs résultats. Nous avons alors mis en évidence le fait que le système global de lecture devrait être testé sur une population plus grande et dont la diversité devait être au moins connue. Nous avons aussi souligné la difficulté d'utilisation du système en pratique. Pour ce qui est de la version améliorée de LLAH, nous avons montré qu'une simple réduction du nombre de points caractéristiques utilisés pour reconnaître l'image du document était suffisante pour rendre l'algorithme efficace et utilisable sur des bases de données de 10 millions de pages. La raison n'en est pas que l'augmentation du pouvoir discriminant des vecteurs de caractéristiques n'augmente pas le taux de réussite, mais plutôt que la marge d'augmentation est très faible (1\% seulement).
 
-
+Il existe des solutions qui affranchissent de la lourdeur du système. Par exemple, HotPaper \cite{hotpaper} est un système de reconnaissance de documents pour téléphones que les auteurs citent eux-mêmes. Une idée pourrait-être de porter une solution utilisant LLAH ou sa version améliorée sur téléphone. Notez bien que lorsque l'article \cite{hotpaper} a été écrit, les téléphones portables étaient dotés de caméras de bien moins bonne qualité que celles des smartphones d'aujourd'hui\footnote{La résolution de la caméra de test de HotPaper est de $177 \times 144$ pixels alors que la résolution du Samsung Galaxy S5 par exemple, est de 16MP}. Il est vrai que l'on perd l'interaction uniquement par le regard, mais il n'y a plus besoin de calibration "stressante" et les utilisateurs sont en général habitués à manipuler un smartphone.
 
 \begin{thebibliography}{1}
 	\bibitem{augmented-reality} Augmented Reality, "C'est quoi la Réalité Augmentée ?", [En ligne]. Accessible~: \url{www.augmented-reality.fr/cest-quoi-la-realite-augmentee/}. [Accès le 28 Octobre 2014].
+	\bibitem{hotpaper} B. Erol, E. Ant\'unez et J. J. Hull, "Hotpaper: multimedia interaction with paper using mobile phones", dans \textit{Proceedings of the 16th ACM international conference on Multimedia}, 2008, pp.399-408.
+	\bibitem{annotation} J. Jeon, V. Lavrenko et R. Manmatha, "Automatic Image Annotation and Retrieval using Cross-Media Relevance Models", dans \textit{Proceedings of the 26th annual international ACM SIGIR conference on Research and development in informaion retrieval}, 2003, pp.119-126.
 \end{thebibliography}
 
 \end{document}
